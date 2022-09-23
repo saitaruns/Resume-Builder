@@ -1,0 +1,25 @@
+@import url("../App.css");
+
+.navbar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.navbar__title {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--primary-color);
+    display: flex;
+}
+
+.navbar__title > img{
+    padding: 0px 10px;
+}
+
+.navbar__item {
+    padding: 10px 20px 10px 0px;
+    vertical-align: middle;
+}

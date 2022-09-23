@@ -1,0 +1,20 @@
+@import url('../App.css');
+
+.btn{
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-primary{
+    background-color: var(--btn-bg-primary);
+    color: var(--btn-text-primary);
+    border: 1px solid var(--btn-text-primary);
+}
+
+.btn-secondary{
+    background-color: var(--btn-bg-secondary);
+    color: var(--btn-text-secondary);
+    border: 1px solid var(--btn-text-secondary);
+}
