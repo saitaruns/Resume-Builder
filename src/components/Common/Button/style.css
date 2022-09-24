@@ -6,6 +6,7 @@
     font-size: 16px;
     cursor: pointer;
     width: min-content;
+    text-align: center;
 }
 
 .btn-primary{
@@ -23,4 +24,10 @@
 .btn-special{
     background-color: var(--btn-bg-special);
     color: var(--btn-text-primary);
+}
+
+.btn-light{
+    background-color: white;
+    border: 1px solid var(--border-color);
+    color:var(--btn-text-light)
 }

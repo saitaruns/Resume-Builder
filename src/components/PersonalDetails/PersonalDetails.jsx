@@ -34,7 +34,7 @@ const PersonalDetails = (props) => {
                             }}
                         />
                         <InputText
-                            label={"Email"}
+                            label={"Email-ID"}
                             value={email}
                             onChange={(e) => {
                                 setEmail(e.target.value);
@@ -42,7 +42,7 @@ const PersonalDetails = (props) => {
                         />
                     </div>
                     <TextArea
-                        label={"Bio"}
+                        label={"Short Bio"}
                         value={bio}
                         onChange={(e) => {
                             setBio(e.target.value);

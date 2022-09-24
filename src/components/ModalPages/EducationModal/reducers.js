@@ -1,4 +1,4 @@
-import { ADD_EDUCATION, DELETE_EDUCATION } from "./actionTypes";
+import { ADD_EDUCATION, DELETE_EDUCATION, EDIT_EDUCATION } from "./actionTypes";
 
 const educationIntialState = {
     sections: [],
@@ -10,6 +10,12 @@ const educationReducer = (state = educationIntialState, { type, payload }) => {
             return {
                 sections: [...state.sections, payload],
             };
+        case EDIT_EDUCATION:
+            return {
+                ...state,
+                sections:state.sections.map((item) =>
+                item.id === payload.id ? payload : item
+            )}
         case DELETE_EDUCATION:
             return {
                 sections: state.sections.filter(
@@ -17,7 +23,7 @@ const educationReducer = (state = educationIntialState, { type, payload }) => {
                 ),
             };
         default:
-            return state
+            return state;
     }
 };
 

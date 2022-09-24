@@ -1,11 +1,11 @@
 import './style.css'
 
-const InputText = ({ label,value,onChange}) => {
+const InputText = ({ label,value,onChange,type="text"}) => {
     return (
         <div className="input-box">
             {label && <label htmlFor="">{label}</label>}
             <input
-                type="text"
+                type={type}
                 onChange={onChange}
                 value={value}
             />

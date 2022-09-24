@@ -1,33 +1,66 @@
+import { connect } from "react-redux";
 import store from "../../store";
 import Accordion from "../Common/Accordion/Accordion";
 import Button from "../Common/Button/Button";
 import { toggleModalView } from "../Modal/actions";
+import { deleteEducation } from "../ModalPages/EducationModal/actions";
 import "./style.css";
 
-const DetailsTemplate = () => {
+const DetailsTemplate = ({ sections }) => {
     return (
         <div className="details-template">
             <Button
                 text={"Add New"}
-                callBack={() => {store.dispatch(toggleModalView({isOpen:true}))}}
+                callBack={() => {
+                    store.dispatch(toggleModalView({ isOpen: true }));
+                }}
                 type={"secondary"}
                 styles={{
-                    margin: "0 auto",
-                    width: "100%"
+                    width: "calc(100% - 35px)",
                 }}
             />
-            <Accordion title="What's It Like Inside Jupiter?">
-                It's really hot inside Jupiter! No one knows exactly how hot,
-                but scientists think it could be about 43,000°F (24,000°C) near
-                Jupiter's center, or core.
-            </Accordion>
-            <Accordion title="What's It Like Inside Jupiter?">
-                It's really hot inside Jupiter! No one knows exactly how hot,
-                but scientists think it could be about 43,000°F (24,000°C) near
-                Jupiter's center, or core.
-            </Accordion>
+            {sections &&
+                sections.map((sec) => (
+                    <Accordion
+                        title={sec.institute}
+                        startDate={sec.startDate}
+                        endDate={sec.endDate}
+                    >
+                        <div className="side-heading">Degree</div>
+                        <p className="text-1">{sec.degree}</p>
+                        <div className="side-heading">Description</div>
+                        <p className="text-2">{sec.desc}</p>
+                        <div className="flex-row btn-grp">
+                            <Button
+                                text={"Edit"}
+                                callBack={() =>
+                                    store.dispatch(
+                                        toggleModalView({
+                                            isOpen: true,
+                                            id: sec.id,
+                                        })
+                                    )
+                                }
+                                type={"light"}
+                            />
+                            <Button
+                                text={"Delete"}
+                                callBack={() => {
+                                    store.dispatch(
+                                        deleteEducation({ id: sec.id })
+                                    );
+                                }}
+                                type={"light"}
+                            />
+                        </div>
+                    </Accordion>
+                ))}
         </div>
     );
 };
 
-export default DetailsTemplate;
+const mapStateToProps = (state) => {
+    return { sections: state.educationReducer.sections };
+};
+
+export default connect(mapStateToProps)(DetailsTemplate);

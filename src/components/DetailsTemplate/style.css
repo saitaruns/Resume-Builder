@@ -1,4 +1,27 @@
-.details-template{
+.details-template {
     margin: 0 auto;
-    width: 80vw;
+    width: 50vw;
+}
+
+.side-heading {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.text-1 {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.text-2 {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.btn-grp > *{
+    margin: 0px 5px;
+}
+
+.btn-grp > div:first-child{
+    margin-left: 0;
 }

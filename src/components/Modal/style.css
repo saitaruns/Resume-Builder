@@ -16,12 +16,20 @@
 	border-radius: 5px;
 	max-width: 100%;
 	margin: 50px auto;
-	padding: 15px;
-	width: 560px;
+	padding: 25px;
+	width: 40vw;
 }
 
 .modal__title {
 	font-size: 18px;
 	font-weight: 600;
 	margin-bottom: 25px;
+}
+
+.modal__footer{
+	display: flex;
+}
+
+.modal__footer > *{
+	margin-right: 10px
 }
