@@ -1,0 +1,9 @@
+.tabs{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+}
+
+.tab-menu-item{
+    padding: 5px;
+}

@@ -1,0 +1,11 @@
+.input-box{
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box > input{
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary);
+}

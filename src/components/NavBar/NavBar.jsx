@@ -1,6 +1,6 @@
-import '../styles/NavBar.css'
-import BrandLogo from '../assets/brand.png'
-import Button from './Button';
+import './style.css'
+import BrandLogo from '../../assets/brand.png'
+import Button from '../Common/Button/Button';
 
 const NavBar = () => (
     <header className='navbar'>

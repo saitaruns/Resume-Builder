@@ -1,0 +1,10 @@
+.text-area-box{
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-area-box > textarea{
+    resize: none;
+}
