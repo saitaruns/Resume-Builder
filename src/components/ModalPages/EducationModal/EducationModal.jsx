@@ -8,17 +8,24 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const EducationModal = ({ title, onClose, onSave,onEdit, id }) => {
-    const [section,setSection] = useState({});
+    const [section,setSection] = useState({
+        institute:"",
+        degree:"",
+        startDate:"",
+        endDate:"",
+        desc:""
+    });
 
     const item = useSelector((state)=>state.educationReducer.sections.find((i)=>i.id===id));
-    
+
     useEffect(()=>{
-        if(id!==undefined){
+        if(id!==null){
             setSection(item)
         }
     },[id,item])
 
     const onSaveClick = () => {
+        console.log(section)
         setSection({})
         onSave({ id: uuidv4(),...section });
     };
@@ -34,19 +41,19 @@ const EducationModal = ({ title, onClose, onSave,onEdit, id }) => {
                 <InputText
                     label={"Institute"}
                     value={section.institute}
-                    onChange={(e) => setSection({...section, institute: e.target.value})}
+                    callBack={(e) => setSection({...section, institute: e.target.value})}
                 />
                 <InputText
                     label={"Degree"}
                     value={section.degree}
-                    onChange={(e) =>  setSection({...section, degree: e.target.value})}
+                    callBack={(e) =>  setSection({...section, degree: e.target.value})}
                 />
                 <div className="tino">
                     <InputText
                         label={"Start date"}
                         type={"date"}
                         value={section.startDate}
-                        onChange={(e) =>
+                        callBack={(e) =>
                             setSection({ ...section, startDate: e.target.value })
                         }
                     />
@@ -54,23 +61,24 @@ const EducationModal = ({ title, onClose, onSave,onEdit, id }) => {
                         label={"End date"}
                         type={"date"}
                         value={section.endDate}
-                        onChange={(e) =>
+                        callBack={(e) =>
                             setSection({ ...section, endDate: e.target.value })
                         }
                     />
                 </div>
                 <TextArea
+                    styles={{height:"180px"}}
                     label={"Description"}
                     value={section.desc}
-                    onChange={(e) => setSection({...section, desc: e.target.value})}
+                    callBack={(e) => setSection({...section, desc: e.target.value})}
                 />
             </div>
             <div className="modal__footer">
-                <Button text={id===undefined ? "Save" : "Edit"} type={"special"} callBack={
-                    id===undefined?
-                    onSaveClick:onEditClick
+                <Button text={id===null ? "Save" : "Edit"} type={"special"} callBack={
+                    id===null?
+                    onSaveClick : onEditClick
                     } />
-                <Button text={"Cancel"} type={"secondary"} callBack={onClose} />
+                <Button text={"Cancel"} type={"light"} callBack={onClose} />
             </div>
         </>
     );

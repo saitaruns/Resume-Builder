@@ -1,66 +1,60 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
+import {
+    RESUME_SECTION_ACHIEVEMENTS,
+    RESUME_SECTION_EDUCATION,
+    RESUME_SECTION_WORK_EXPERIENCE,
+} from "../../constants";
 import store from "../../store";
-import Accordion from "../Common/Accordion/Accordion";
+import AccordionWrapper from "../Common/AccordionWrapper/AccordionWrapper";
 import Button from "../Common/Button/Button";
 import { toggleModalView } from "../Modal/actions";
-import { deleteEducation } from "../ModalPages/EducationModal/actions";
 import "./style.css";
 
-const DetailsTemplate = ({ sections }) => {
+const DetailsTemplate = ({ state, tab }) => {
+    const [sections, setSections] = useState([])
+
+    useEffect(() => {
+      switch (tab) {
+        case RESUME_SECTION_EDUCATION:
+            setSections(state.educationReducer.sections)
+            break;
+        case RESUME_SECTION_WORK_EXPERIENCE:
+            setSections(state.workExperienceReducer.sections)
+            break;
+        case RESUME_SECTION_ACHIEVEMENTS:
+            setSections(state.achievementReducer.sections)
+            break;
+        default:
+            break;
+      }
+    }, [state, tab])
+
     return (
         <div className="details-template">
             <Button
-                text={"Add New"}
+                text={"Add new"}
                 callBack={() => {
-                    store.dispatch(toggleModalView({ isOpen: true }));
+                    store.dispatch(toggleModalView({ isOpen: true, id: null }));
                 }}
                 type={"secondary"}
                 styles={{
-                    width: "calc(100% - 35px)",
+                    width: "100%",
                 }}
             />
-            {sections &&
-                sections.map((sec) => (
-                    <Accordion
-                        title={sec.institute}
-                        startDate={sec.startDate}
-                        endDate={sec.endDate}
-                    >
-                        <div className="side-heading">Degree</div>
-                        <p className="text-1">{sec.degree}</p>
-                        <div className="side-heading">Description</div>
-                        <p className="text-2">{sec.desc}</p>
-                        <div className="flex-row btn-grp">
-                            <Button
-                                text={"Edit"}
-                                callBack={() =>
-                                    store.dispatch(
-                                        toggleModalView({
-                                            isOpen: true,
-                                            id: sec.id,
-                                        })
-                                    )
-                                }
-                                type={"light"}
-                            />
-                            <Button
-                                text={"Delete"}
-                                callBack={() => {
-                                    store.dispatch(
-                                        deleteEducation({ id: sec.id })
-                                    );
-                                }}
-                                type={"light"}
-                            />
-                        </div>
-                    </Accordion>
-                ))}
+            {sections.map((sec) => (
+                <AccordionWrapper
+                    tab={tab}
+                    sec={sec}
+                />
+            ))}
         </div>
     );
 };
 
 const mapStateToProps = (state) => {
-    return { sections: state.educationReducer.sections };
+    return { state: state };
 };
 
 export default connect(mapStateToProps)(DetailsTemplate);

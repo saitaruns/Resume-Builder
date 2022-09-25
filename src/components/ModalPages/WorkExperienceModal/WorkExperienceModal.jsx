@@ -7,36 +7,30 @@ import { v4 as uuidv4 } from "uuid";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-const EducationModal = ({ title, onClose, onSave,onEdit, id }) => {
-    const [institute, setInstitute] = useState("");
-    const [degree, setDegree] = useState("");
-    const [date, setDate] = useState({
-        startDate: "",
-        endDate: "",
+const WorkExperienceModal = ({ title, onClose, onSave,onEdit, id }) => {
+    const [section,setSection] = useState({
+        company:"",
+        role:"",
+        startDate:"",
+        endDate:"",
+        desc:""
     });
-    const [desc, setDesc] = useState("");
 
-    const item = useSelector((state)=>state.educationReducer.sections.find((i)=>i.id===id));
+    const item = useSelector((state)=>state.workExperienceReducer.sections.find((i)=>i.id===id));
     
     useEffect(()=>{
-        if(id!==undefined){
-            setInstitute(item.institute)
-            setDegree(item.degree)
-            setDate({startDate:item.startDate,endDate:item.endDate})
-            setDesc(item.desc)
+        if(id!==null){
+            setSection(item)
         }
     },[id,item])
 
     const onSaveClick = () => {
-        setInstitute("");
-        setDegree("");
-        setDate({ startDate: "", endDate: "" });
-        setDesc("");
-        onSave({ id: uuidv4(), institute, degree, ...date, desc });
+        setSection({})
+        onSave({ id: uuidv4(),...section });
     };
 
     const onEditClick = ()=>{
-        onEdit({ id, institute, degree, ...date, desc });
+        onEdit(section);
     }
 
     return (
@@ -44,48 +38,49 @@ const EducationModal = ({ title, onClose, onSave,onEdit, id }) => {
             <h3 className="modal__title">{title}</h3>
             <div className="ed-modal">
                 <InputText
-                    label={"Institute"}
-                    value={institute}
-                    onChange={(e) => setInstitute(e.target.value)}
+                    label={"Company"}
+                    value={section.company}
+                    callBack={(e) => setSection({...section, company: e.target.value})}
                 />
                 <InputText
-                    label={"Degree"}
-                    value={degree}
-                    onChange={(e) => setDegree(e.target.value)}
+                    label={"Role"}
+                    value={section.role}
+                    callBack={(e) =>  setSection({...section, role: e.target.value})}
                 />
                 <div className="tino">
                     <InputText
                         label={"Start date"}
                         type={"date"}
-                        value={date.startDate}
-                        onChange={(e) =>
-                            setDate({ ...date, startDate: e.target.value })
+                        value={section.startDate}
+                        callBack={(e) =>
+                            setSection({ ...section, startDate: e.target.value })
                         }
                     />
                     <InputText
                         label={"End date"}
                         type={"date"}
-                        value={date.endDate}
-                        onChange={(e) =>
-                            setDate({ ...date, endDate: e.target.value })
+                        value={section.endDate}
+                        callBack={(e) =>
+                            setSection({ ...section, endDate: e.target.value })
                         }
                     />
                 </div>
                 <TextArea
+                    styles={{height:"180px"}}
                     label={"Description"}
-                    value={desc}
-                    onChange={(e) => setDesc(e.target.value)}
+                    value={section.desc}
+                    callBack={(e) => setSection({...section, desc: e.target.value})}
                 />
             </div>
             <div className="modal__footer">
-                <Button text={id===undefined ? "Save" : "Edit"} type={"special"} callBack={
-                    id===undefined?
+                <Button text={id===null ? "Save" : "Edit"} type={"special"} callBack={
+                    id===null?
                     onSaveClick:onEditClick
                     } />
-                <Button text={"Cancel"} type={"secondary"} callBack={onClose} />
+                <Button text={"Cancel"} type={"light"} callBack={onClose} />
             </div>
         </>
     );
 };
 
-export default EducationModal;
+export default WorkExperienceModal;

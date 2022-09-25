@@ -1,7 +1,9 @@
+import moment from "moment/moment";
 import { useState } from "react";
+import { RESUME_SECTION_ACHIEVEMENTS } from "../../../constants";
 import './style.css'
 
-const Accordion = ({ title, children,startDate,endDate }) => {
+const Accordion = ({ title, children,startDate,endDate,tab }) => {
     const [isOpen, setOpen] = useState(false);
     return (
         <div className="accordion-wrapper">
@@ -10,8 +12,8 @@ const Accordion = ({ title, children,startDate,endDate }) => {
                 onClick={() => setOpen(!isOpen)}
             >
                 <div className="accordion-title-inner">
-                    <span>{title}</span>
-                    <span>{startDate}-{endDate}</span>
+                    <span className="acc-title">{title}</span>
+                    <span className="acc-date">{moment(startDate).format("MMM YYYY")}{(tab !== RESUME_SECTION_ACHIEVEMENTS) && " - "+moment(endDate).format("MMM YYYY")}</span>
                 </div>
             </div>
             <div className={`accordion-item ${!isOpen ? "collapsed" : ""}`}>

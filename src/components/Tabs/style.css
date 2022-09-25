@@ -1,9 +1,19 @@
+@import url('../../App.css');
+
 .tabs{
     display: flex;
     justify-content: center;
-    padding: 10px 0px;
+    padding: 25px 0px;
 }
 
 .tab-menu-item{
-    padding: 5px;
+    padding: 5px 10px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.tab-menu-item-active{
+    color: black;
+    border-bottom: 2px solid black;
 }

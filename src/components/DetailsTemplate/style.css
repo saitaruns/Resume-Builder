@@ -3,6 +3,10 @@
     width: 50vw;
 }
 
+.details-template > .btn{
+    font-weight: 600;
+}
+
 .side-heading {
     font-weight: 600;
     font-size: 14px;

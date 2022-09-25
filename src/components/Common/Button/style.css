@@ -4,9 +4,13 @@
     padding: 8px 16px;
     border-radius: 6px;
     font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
+    height: min-content;
     width: min-content;
     text-align: center;
+    outline: none;
+    border: none;
 }
 
 .btn-primary{
@@ -28,6 +32,7 @@
 
 .btn-light{
     background-color: white;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
+    padding: 6px 16px;
     color:var(--btn-text-light)
 }

@@ -1,14 +1,22 @@
 import './style.css'
 
-const InputText = ({ label,value,onChange,type="text"}) => {
+const InputText = ({ label,value,callBack,type="text",required=false}) => {
     return (
         <div className="input-box">
             {label && <label htmlFor="">{label}</label>}
+            {required ?
+            <input
+                required
+                type={type}
+                onChange={callBack}
+                value={value}
+            />:
             <input
                 type={type}
-                onChange={onChange}
+                onChange={callBack}
                 value={value}
             />
+        }
         </div>
     );
 };

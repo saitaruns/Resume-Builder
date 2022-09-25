@@ -1,5 +1,5 @@
 import './style.css'
-import BrandLogo from '../../assets/brand.png'
+import BrandLogo from '../../assets/ClipboardOutlined.svg'
 import Button from '../Common/Button/Button';
 
 const NavBar = () => (
