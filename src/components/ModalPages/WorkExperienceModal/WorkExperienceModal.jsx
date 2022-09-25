@@ -73,7 +73,7 @@ const WorkExperienceModal = ({ title, onClose, onSave,onEdit, id }) => {
                 />
             </div>
             <div className="modal__footer">
-                <Button text={id===null ? "Save" : "Edit"} type={"special"} callBack={
+                <Button text="Save" type={"special"} callBack={
                     id===null?
                     onSaveClick:onEditClick
                     } />

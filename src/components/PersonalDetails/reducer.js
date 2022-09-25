@@ -4,6 +4,10 @@ const initialState = {
     name:"",
     email:"",
     bio:"",
+    imgFile:{
+        image:null,
+        name:""
+    }
 }
 
 const personalDetailReducer = (state=initialState,{type,payload})=>{
@@ -14,6 +18,9 @@ const personalDetailReducer = (state=initialState,{type,payload})=>{
                 name: payload.name,
                 bio: payload.bio,
                 email: payload.email,
+                imgFile: {
+                    ...state.imgFile,
+                    ...payload.imgFile}
             }
         default:
             return state;

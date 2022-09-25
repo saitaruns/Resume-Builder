@@ -41,12 +41,14 @@ const DetailsTemplate = ({ state, tab }) => {
                 type={"secondary"}
                 styles={{
                     width: "100%",
+                    border: "1px solid #717171"
                 }}
             />
             {sections.map((sec) => (
                 <AccordionWrapper
                     tab={tab}
                     sec={sec}
+                    key={sec.id}
                 />
             ))}
         </div>

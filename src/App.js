@@ -9,18 +9,18 @@ import {
     addAchievements,
     editAchievements,
 } from "./components/ModalPages/AchievementsModal/actions";
-import { ADD_ACHIEVEMENTS_TEXT } from "./components/ModalPages/AchievementsModal/constants";
+import { ADD_ACHIEVEMENTS_TEXT, EDIT_ACHIEVEMENTS_TEXT } from "./components/ModalPages/AchievementsModal/constants";
 import {
     addEducation,
     editEducation,
 } from "./components/ModalPages/EducationModal/actions";
-import { ADD_EDUCATION_TEXT } from "./components/ModalPages/EducationModal/constants";
+import { ADD_EDUCATION_TEXT, EDIT_EDUCATION_TEXT } from "./components/ModalPages/EducationModal/constants";
 import EducationModal from "./components/ModalPages/EducationModal/EducationModal";
 import {
     addWorkExperience,
     editWorkExperience,
 } from "./components/ModalPages/WorkExperienceModal/actions";
-import { ADD_WORK_EXPERIENCE_TEXT } from "./components/ModalPages/WorkExperienceModal/constants";
+import { ADD_WORK_EXPERIENCE_TEXT, EDIT_WORK_EXPERIENCE_TEXT } from "./components/ModalPages/WorkExperienceModal/constants";
 import WorkExperienceModal from "./components/ModalPages/WorkExperienceModal/WorkExperienceModal";
 import NavBar from "./components/NavBar/NavBar";
 import PersonalDetails from "./components/PersonalDetails/PersonalDetails";
@@ -81,7 +81,7 @@ function App({ isModalOpen, id }) {
                 return (
                     <EducationModal
                         id={id}
-                        title={ADD_EDUCATION_TEXT}
+                        title={id===null ? ADD_EDUCATION_TEXT : EDIT_EDUCATION_TEXT}
                         onClose={onModalClose}
                         onSave={onEducationModalSave}
                         onEdit={onEducationModalEdit}
@@ -91,7 +91,7 @@ function App({ isModalOpen, id }) {
                 return (
                     <WorkExperienceModal
                         id={id}
-                        title={ADD_WORK_EXPERIENCE_TEXT}
+                        title={id===null ? ADD_WORK_EXPERIENCE_TEXT : EDIT_WORK_EXPERIENCE_TEXT}
                         onClose={onModalClose}
                         onSave={onWorkExperienceModalSave}
                         onEdit={onWorkExperienceModalEdit}
@@ -101,7 +101,7 @@ function App({ isModalOpen, id }) {
                 return (
                     <AchievementModal
                         id={id}
-                        title={ADD_ACHIEVEMENTS_TEXT}
+                        title={id===null ? ADD_ACHIEVEMENTS_TEXT : EDIT_ACHIEVEMENTS_TEXT}
                         onClose={onModalClose}
                         onSave={onAchievementModalSave}
                         onEdit={onAchievementModalEdit}

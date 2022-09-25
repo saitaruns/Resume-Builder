@@ -1,10 +1,14 @@
 import moment from "moment/moment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RESUME_SECTION_ACHIEVEMENTS } from "../../../constants";
 import './style.css'
 
 const Accordion = ({ title, children,startDate,endDate,tab }) => {
     const [isOpen, setOpen] = useState(false);
+    useEffect(() => {
+      setOpen(false)
+    }, [tab])
+    
     return (
         <div className="accordion-wrapper">
             <div

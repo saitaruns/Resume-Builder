@@ -9,7 +9,8 @@
     flex: 3;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 30px 0px;
+    height: 220px;
 }
 
 .img-btn{
@@ -21,6 +22,8 @@
     display: flex;
     align-items: center;
     background-color: #FFFFFF;
+    color: var(--btn-text-light);
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -60,6 +63,9 @@
 }
 
 /* after save */
+.de > h1{
+    margin-bottom: 5px;
+}
 
 .de > p{
     margin: 5px;

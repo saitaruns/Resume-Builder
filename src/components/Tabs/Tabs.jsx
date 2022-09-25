@@ -6,7 +6,7 @@ const Tabs = ({activeItem,tabmenu,onTabClick,res}) => {
   return (
     <div className='tabs'>
         {tabmenu.map((tab)=>{
-            return (<div className={'tab-menu-item '+ (activeItem===tab ? "tab-menu-item-active" : "")} onClick={()=>onTabClick(tab)}>
+            return (<div key={tab} className={'tab-menu-item '+ (activeItem===tab ? "tab-menu-item-active" : "")} onClick={()=>onTabClick(tab)}>
                 {tab} ({res[tab]})
             </div>)
         })}

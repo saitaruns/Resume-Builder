@@ -8,7 +8,12 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const AchievementModal = ({ title, onClose, onSave, onEdit, id }) => {
-    const [section, setSection] = useState({});
+    const [section, setSection] = useState({
+        title:"",
+        role:"",
+        date:"",
+        desc:""
+    });
 
     const item = useSelector((state) =>
         state.achievementReducer.sections.find((i) => i.id === id)
@@ -59,7 +64,7 @@ const AchievementModal = ({ title, onClose, onSave, onEdit, id }) => {
             </div>
             <div className="modal__footer">
                 <Button
-                    text={id === null ? "Save" : "Edit"}
+                    text="Save"
                     type={"special"}
                     callBack={id === null ? onSaveClick : onEditClick}
                 />
